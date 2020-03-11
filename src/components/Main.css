@@ -42,4 +42,7 @@
     font-size: 20px;
     color: #424242;
 }
+.trashcan{
+    cursor: pointer;
+}
 

@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import "./Header.css";
 import bmicLogo from "../images/BMICLogo.png";
 
+const date = new Date();
+
 function Header({ addReport }) {
   const [data, setData] = useState({
     result: "",
     bmi: "",
     weight: "",
-    height: ""
+    height: "",
+    year: date.getFullYear(),
+    month: date.getMonth() + 1,
+    day: date.getDate()
   });
 
   const countBmi = () => {
@@ -20,31 +25,45 @@ function Header({ addReport }) {
         result: "過輕",
         bmi: data.bmi,
         weight: data.weight,
-        height: data.height
+        height: data.height,
+        year: data.year,
+        month: data.month,
+        day: data.day
       });
     } else if (data.bmi !== "" && data.bmi >= 18.5 && data.bmi < 24) {
       setData({
         result: "理想",
         bmi: data.bmi,
         weight: data.weight,
-        height: data.height
+        height: data.height,
+        year: data.year,
+        month: data.month,
+        day: data.day
       });
     } else if (data.bmi !== "" && data.bmi >= 24 && data.bmi < 27.9) {
       setData({
         result: "過重",
         bmi: data.bmi,
         weight: data.weight,
-        height: data.height
+        height: data.height,
+        year: data.year,
+        month: data.month,
+        day: data.day
       });
     } else if (data.bmi !== "" && data.bmi >= 27.9) {
       setData({
         result: "肥胖",
         bmi: data.bmi,
         weight: data.weight,
-        height: data.height
+        height: data.height,
+        year: data.year,
+        month: data.month,
+        day: data.day
       });
     }
-    addReport(data);
+    if (data.result !== "" && data.weight !== "" && data.height !== "") {
+      addReport(data);
+    }
   };
 
   return (

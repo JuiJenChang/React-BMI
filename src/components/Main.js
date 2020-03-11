@@ -1,5 +1,6 @@
 import React from "react";
 import "./Main.css";
+import { GoTrashcan } from "react-icons/go";
 
 function Main({ report, removeReport }) {
   return (
@@ -23,7 +24,14 @@ function Main({ report, removeReport }) {
               <span className="main-span-1">height</span>
               <span className="main-span-2">{data.height}cm</span>
             </div>
-            <button onClick={() => removeReport(i)}>X</button>
+            <div className="main-li">
+              <span className="main-span-1">
+                {data.year}/{data.month}/{data.day}
+              </span>
+            </div>
+            <div className="main-li">
+              <GoTrashcan onClick={() => removeReport(i)} className="trashcan" />
+            </div>
           </li>
         ))}
       </ul>
