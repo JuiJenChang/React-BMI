@@ -33,9 +33,13 @@
     font-size: 18px;
     font-weight: 500;
     border-radius: 10px;
+    outline: none;
 }
 .header input::placeholder{
     color: #999999;
+}
+.header input:focus{
+    box-shadow: 0 0 5px #66cfff;
 }
 .header-btn{
     width: 372px;
@@ -55,6 +59,7 @@
     font-weight: 500;
     padding: 0;
     cursor: pointer;
+    outline: none;
 }
 .header button:hover{
     box-shadow: 0 0 12px #ffd366;

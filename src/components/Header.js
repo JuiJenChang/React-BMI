@@ -3,47 +3,48 @@ import "./Header.css";
 import bmicLogo from "../images/BMICLogo.png";
 
 function Header({ addReport }) {
-  const [bmi, setBmi] = useState(null);
-  const [weight, setWeight] = useState("");
-  const [height, setHeight] = useState("");
-  const [data, setData] = useState({});
-  
+  const [bmi, setBmi] = useState('');
+  const [weight, setWeight] = useState('');
+  const [height, setHeight] = useState('');
+  const [data, setData] = useState({
+    result: "",
+    bmi: "",
+    weight: "",
+    height: ""
+  });
+
   const countBmi = () => {
-    if (weight !== "" && height !== "") {
-      setBmi((weight / Math.pow(height * 0.01, 2)).toFixed(2));
-      if (bmi !== null) {
-        if (bmi < 18.5) {
-          setData({
-            result: "過輕",
-            bmi: bmi,
-            weight: weight,
-            height: height
-          });
-        } else if (bmi >= 18.5 && bmi < 24) {
-          setData({
-            result: "理想",
-            bmi: bmi,
-            weight: weight,
-            height: height
-          });
-        } else if (bmi >= 24 && bmi < 27.9) {
-          setData({
-            result: "過重",
-            bmi: bmi,
-            weight: weight,
-            height: height
-          });
-        } else if (bmi >= 27.9) {
-          setData({
-            result: "肥胖",
-            bmi: bmi,
-            weight: weight,
-            height: height
-          });
-        }
-      }
-      addReport(data);
+    setBmi((weight / Math.pow(height * 0.01, 2)).toFixed(2));
+    if (bmi !== "" && bmi < 18.5) {
+      setData({
+        result: "過輕",
+        bmi: bmi,
+        weight: weight,
+        height: height
+      });
+    } else if (bmi !== "" && bmi >= 18.5 && bmi < 24) {
+      setData({
+        result: "理想",
+        bmi: bmi,
+        weight: weight,
+        height: height
+      });
+    } else if (bmi !== "" && bmi >= 24 && bmi < 27.9) {
+      setData({
+        result: "過重",
+        bmi: bmi,
+        weight: weight,
+        height: height
+      });
+    } else if (bmi !== "" && bmi >= 27.9) {
+      setData({
+        result: "肥胖",
+        bmi: bmi,
+        weight: weight,
+        height: height
+      });
     }
+    addReport(data);
   };
 
   return (
