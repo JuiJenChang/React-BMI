@@ -3,9 +3,6 @@ import "./Header.css";
 import bmicLogo from "../images/BMICLogo.png";
 
 function Header({ addReport }) {
-  const [bmi, setBmi] = useState('');
-  const [weight, setWeight] = useState('');
-  const [height, setHeight] = useState('');
   const [data, setData] = useState({
     result: "",
     bmi: "",
@@ -14,34 +11,37 @@ function Header({ addReport }) {
   });
 
   const countBmi = () => {
-    setBmi((weight / Math.pow(height * 0.01, 2)).toFixed(2));
-    if (bmi !== "" && bmi < 18.5) {
+    setData({
+      ...data,
+      bmi: (data.weight / Math.pow(data.height * 0.01, 2)).toFixed(2)
+    });
+    if (data.bmi !== "" && data.bmi < 18.5) {
       setData({
         result: "過輕",
-        bmi: bmi,
-        weight: weight,
-        height: height
+        bmi: data.bmi,
+        weight: data.weight,
+        height: data.height
       });
-    } else if (bmi !== "" && bmi >= 18.5 && bmi < 24) {
+    } else if (data.bmi !== "" && data.bmi >= 18.5 && data.bmi < 24) {
       setData({
         result: "理想",
-        bmi: bmi,
-        weight: weight,
-        height: height
+        bmi: data.bmi,
+        weight: data.weight,
+        height: data.height
       });
-    } else if (bmi !== "" && bmi >= 24 && bmi < 27.9) {
+    } else if (data.bmi !== "" && data.bmi >= 24 && data.bmi < 27.9) {
       setData({
         result: "過重",
-        bmi: bmi,
-        weight: weight,
-        height: height
+        bmi: data.bmi,
+        weight: data.weight,
+        height: data.height
       });
-    } else if (bmi !== "" && bmi >= 27.9) {
+    } else if (data.bmi !== "" && data.bmi >= 27.9) {
       setData({
         result: "肥胖",
-        bmi: bmi,
-        weight: weight,
-        height: height
+        bmi: data.bmi,
+        weight: data.weight,
+        height: data.height
       });
     }
     addReport(data);
@@ -59,16 +59,18 @@ function Header({ addReport }) {
           <div className="header-input">
             <p>身高cm</p>
             <input
-              value={height}
-              onChange={e => setHeight(e.target.value)}
+              type="text"
+              value={data.height}
+              onChange={e => setData({ ...data, height: e.target.value })}
               placeholder="請輸入身高"
             />
           </div>
           <div className="header-input">
             <p>體重kg</p>
             <input
-              value={weight}
-              onChange={e => setWeight(e.target.value)}
+              type="text"
+              value={data.weight}
+              onChange={e => setData({ ...data, weight: e.target.value })}
               placeholder="請輸入體重"
             />
           </div>
