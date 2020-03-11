@@ -59,7 +59,6 @@ function Header({ addReport }) {
           <div className="header-input">
             <p>身高cm</p>
             <input
-              type="text"
               value={data.height}
               onChange={e => setData({ ...data, height: e.target.value })}
               placeholder="請輸入身高"
@@ -68,7 +67,6 @@ function Header({ addReport }) {
           <div className="header-input">
             <p>體重kg</p>
             <input
-              type="text"
               value={data.weight}
               onChange={e => setData({ ...data, weight: e.target.value })}
               placeholder="請輸入體重"
