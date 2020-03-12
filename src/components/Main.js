@@ -8,7 +8,7 @@ function Main({ report, removeReport }) {
       <h3 className="main-title">BMI 紀錄</h3>
       <ul>
         {report.map((data, i) => (
-          <li key={i}>
+          <li key={i} style={{borderLeftColor: data.color}}>
             <div className="main-result">
               <span>{data.result}</span>
             </div>

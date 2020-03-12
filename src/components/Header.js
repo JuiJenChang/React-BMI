@@ -6,63 +6,63 @@ const date = new Date();
 
 function Header({ addReport }) {
   const [data, setData] = useState({
-    result: "",
-    bmi: "",
     weight: "",
     height: "",
     year: date.getFullYear(),
     month: date.getMonth() + 1,
-    day: date.getDate()
+    day: date.getDate(),
   });
 
   const countBmi = () => {
-    setData({
-      ...data,
-      bmi: (data.weight / Math.pow(data.height * 0.01, 2)).toFixed(2)
-    });
-    if (data.bmi !== "" && data.bmi < 18.5) {
-      setData({
-        result: "過輕",
-        bmi: data.bmi,
-        weight: data.weight,
-        height: data.height,
-        year: data.year,
-        month: data.month,
-        day: data.day
-      });
-    } else if (data.bmi !== "" && data.bmi >= 18.5 && data.bmi < 24) {
-      setData({
-        result: "理想",
-        bmi: data.bmi,
-        weight: data.weight,
-        height: data.height,
-        year: data.year,
-        month: data.month,
-        day: data.day
-      });
-    } else if (data.bmi !== "" && data.bmi >= 24 && data.bmi < 27.9) {
-      setData({
-        result: "過重",
-        bmi: data.bmi,
-        weight: data.weight,
-        height: data.height,
-        year: data.year,
-        month: data.month,
-        day: data.day
-      });
-    } else if (data.bmi !== "" && data.bmi >= 27.9) {
-      setData({
-        result: "肥胖",
-        bmi: data.bmi,
-        weight: data.weight,
-        height: data.height,
-        year: data.year,
-        month: data.month,
-        day: data.day
-      });
-    }
-    if (data.result !== "" && data.weight !== "" && data.height !== "") {
-      addReport(data);
+    let resultBmi = (data.weight / Math.pow(data.height * 0.01, 2)).toFixed(2);
+    let underWeight = {
+      result: "過輕",
+      bmi: resultBmi,
+      weight: data.weight,
+      height: data.height,
+      year: data.year,
+      month: data.month,
+      day: data.day,
+      color: "#23c1ff"
+    };
+    let normalWeight = {
+      result: "理想",
+      bmi: resultBmi,
+      weight: data.weight,
+      height: data.height,
+      year: data.year,
+      month: data.month,
+      day: data.day,
+      color: "#06c410"
+    };
+    let overWeight = {
+      result: "過重",
+      bmi: resultBmi,
+      weight: data.weight,
+      height: data.height,
+      year: data.year,
+      month: data.month,
+      day: data.day,
+      color: "#f79525"
+    };
+    let obesity = {
+      result: "肥胖",
+      bmi: resultBmi,
+      weight: data.weight,
+      height: data.height,
+      year: data.year,
+      month: data.month,
+      day: data.day,
+      color: "#ff0000"
+    };
+    if (resultBmi < 18.5) {
+      addReport(underWeight);
+    } else if (resultBmi >= 18.5 && resultBmi < 24) {
+      addReport(normalWeight);
+    } else if (resultBmi >= 24 && resultBmi < 27.9) {
+      addReport(overWeight);
+    } else if (resultBmi >= 27.9) {
+      addReport(obesity);
     }
   };
 

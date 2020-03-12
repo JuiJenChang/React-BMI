@@ -19,7 +19,7 @@
     align-items: center;
 }
 .main li{
-    border-left: 6px #424242 solid;
+    border-left: 6px solid;
     margin-bottom: 20px;
     background: #ffffff;
 }
@@ -32,6 +32,7 @@
 .main-li{
     display: inline-block;
     padding: 20px 20px;
+    margin-right: 50px;
 }
 .main-span-1{
     font-size: 12px;
